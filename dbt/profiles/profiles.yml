@@ -1,0 +1,12 @@
+test:
+  outputs:
+    base:
+      dbname: airflow
+      host: ada-qual-airflow.cq1cdtppmwkr.us-west-2.rds.amazonaws.com
+      pass: U7FawDvdxPQU20kLYVAdNpiP
+      port: 5432
+      schema: raw
+      threads: 4
+      type: postgres
+      user: airflow
+  target: base
