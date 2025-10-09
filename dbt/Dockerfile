@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ghcr.io/dbt-labs/dbt-snowflake:1.9.0
+FROM --platform=linux/amd64 ghcr.io/dbt-labs/dbt-postgres:1.9.0
 
 WORKDIR /dbt
 
@@ -10,7 +10,7 @@ RUN mkdir -p /root/.dbt
 COPY dbt/profiles/ /root/.dbt/
 
 # Install specific dbt version to avoid mismatch
-RUN pip install --no-cache-dir --upgrade dbt-snowflake==1.9.0
+RUN pip install --upgrade dbt-postgres==1.9.0
 
 # Check profiles folder
 RUN echo "Contents of /root/.dbt:" && ls -la /root/.dbt
