@@ -1,28 +1,13 @@
-
-
-/*
-    Welcome to your first dbt model!
-    Did you know that you can also configure models directly within SQL files?
-    This will override configurations stated in dbt_project.yml
-
-    Try changing "table" to "view" below
-*/
-
-{{ config(materialized='table') }}
-
-with source_data as (
-
-    select 1 as id
-    union all
-    select null as id
-
+WITH source_data AS (
+    SELECT 
+        id,
+        name,
+        created_at
+    FROM {{ source('raw', 'users') }}
 )
-
-select *
-from source_data
-
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not nulls
+SELECT 
+    id,
+    name,
+    created_at
+FROM source_data
+WHERE created_at >= '2024-01-01'
